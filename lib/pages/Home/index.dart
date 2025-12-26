@@ -1,3 +1,4 @@
+import 'package:flu_web_pro01/api/home.dart';
 import 'package:flu_web_pro01/components/Home/HmMoreList.dart';
 import 'package:flutter/material.dart';
 import 'package:flu_web_pro01/components/Home/HmSlider.dart';
@@ -14,30 +15,30 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  final List<BannerItem> banners = [
-    BannerItem(
-      id: "1",
-      imageUrl:
-          "https://yjy-teach-oss.oss-cn-beijing.aliyuncs.com/meituan/1.jpg",
-    ),
-    BannerItem(
-      id: "2",
-      imageUrl:
-          "https://yjy-teach-oss.oss-cn-beijing.aliyuncs.com/meituan/2.png",
-    ),
-    BannerItem(
-      id: "3",
-      imageUrl:
-          "https://yjy-teach-oss.oss-cn-beijing.aliyuncs.com/meituan/3.jpg",
-    ),
-  ];
+  List<BannerItem> _banners = [];
+
+  // 初始化轮播图数据
+  void _initBannerList() async {
+    // 初始化轮播图数据
+    _banners = await getBannerListAPI();
+
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    // 初始化轮播图数据
+    _initBannerList();
+  }
 
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
         // 包裹普通widget的 sliver 家族的组件
-        SliverToBoxAdapter(child: HmSlider(banners: banners)), // 轮播图组件
+        SliverToBoxAdapter(child: HmSlider(banners: _banners)), // 轮播图组件
         SliverToBoxAdapter(child: SizedBox(height: 10)), // 占位分隔
         // SliverGrid 和 SliverList 只能纵向滚动，不能横向滚动， 所以这里用 SliverToBoxAdapter 包裹
         SliverToBoxAdapter(child: HmCategory()), // 分类组件

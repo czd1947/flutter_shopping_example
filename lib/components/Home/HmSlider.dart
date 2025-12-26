@@ -21,6 +21,11 @@ class _HmSliderState extends State<HmSlider> {
   // 定义轮播图组件
   Widget _getSlider() {
     // print("轮播图数据： ${widget.banners}");
+    // 遍历轮播图数据，打印每个item的imageUrl
+    // widget.banners.forEach((item) {
+    //   print("轮播图图片地址: ${item.imageUrl}");
+    // });
+
     // 在 Flutter 中获取屏幕宽度的方法
     final double screenWidth = MediaQuery.of(context).size.width;
 
