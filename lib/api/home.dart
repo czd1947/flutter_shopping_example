@@ -14,3 +14,53 @@ Future<List<BannerItem>> getBannerListAPI() async {
     return BannerItem.fromJSON(item);
   }).toList();
 }
+
+// 获取分类数据
+Future<List<CategoryItem>> getCategoryListAPI() async {
+  // 返回请求数据
+  return ((await DioRequest().get(HttpConstants.CATEGORY_LIST)) as List).map((
+    item,
+  ) {
+    return CategoryItem.fromJSON(item);
+  }).toList();
+}
+
+// 获取热门商品数据
+Future<SpecialOfferDataResult> getSpecialOfferListAPI() async {
+  // 返回请求数据
+  return SpecialOfferDataResult.fromJSON(
+    await DioRequest().get(HttpConstants.HOT_PRODUCT_LIST),
+  );
+}
+
+// 获取爆款推荐数据
+Future<SpecialOfferDataResult> getInvogueListAPI() async {
+  // 返回请求数据
+  return SpecialOfferDataResult.fromJSON(
+    await DioRequest().get(HttpConstants.INVOGUE_LIST),
+  );
+}
+
+// 获取一站全买数据
+Future<SpecialOfferDataResult> getOneStopListAPI() async {
+  // 返回请求数据
+  return SpecialOfferDataResult.fromJSON(
+    await DioRequest().get(HttpConstants.ONE_STOP_LIST),
+  );
+}
+
+// 获取推荐商品数据
+Future<List<RecommendGoodsItem>> getRecommendListAPI(
+  Map<String, dynamic> params,
+) async {
+  // 返回请求数据
+  return ((await DioRequest().get(
+            HttpConstants.RECOMMEND_LIST,
+            queryParameters: params,
+          ))
+          as List)
+      .map((item) {
+        return RecommendGoodsItem.fromJSON(item);
+      })
+      .toList();
+}

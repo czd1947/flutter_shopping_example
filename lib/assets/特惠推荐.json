@@ -1,0 +1,194 @@
+{
+  "code": "1",
+  "msg": "操作成功",
+  "result": {
+    "id": "897682543",
+    "title": "特惠推荐",
+    "subTypes": [
+      {
+        "id": "912000341",
+        "title": "抢先尝鲜",
+        "goodsItems": {
+          "counts": 459,
+          "pageSize": 10,
+          "pages": 46,
+          "page": 1,
+          "items": [
+            {
+              "id": "1750713979405074436",
+              "name": "SAIMEI 彩明 i.ro 儿童防紫外线太阳镜 蓝色",
+              "desc": "防紫外线舒适护目太阳镜",
+              "price": "839.00",
+              "picture": "https://yjy-teach-oss.oss-cn-beijing.aliyuncs.com/meikou/235214/p5.png",
+              "orderNum": 8
+            },
+            {
+              "id": "1750713978985644033",
+              "name": "Fleep 带胸垫纯棉蕾丝背心打底内衣 烟粉色",
+              "desc": "贴身无痕，轻薄吸汗",
+              "price": "411.00",
+              "picture": "https://yjy-teach-oss.oss-cn-beijing.aliyuncs.com/meikou/216885/p1.png",
+              "orderNum": 14
+            },
+            {
+              "id": "1750713979535097864",
+              "name": "十方未来 舒适贴身内搭保暖打底衣 棕色",
+              "desc": "对抗寒冬，倍暖打底",
+              "price": "354.00",
+              "picture": "https://yjy-teach-oss.oss-cn-beijing.aliyuncs.com/meikou/239623/p6.png",
+              "orderNum": 16
+            },
+            {
+              "id": "1379052170040578049",
+              "name": "极光限定 珠光蓝珐琅锅",
+              "desc": null,
+              "price": "199.00",
+              "picture": "http://yjy-xiaotuxian-dev.oss-cn-beijing.aliyuncs.com/picture/2021-04-05/7f483771-6831-4a7a-abdb-2625acb755f3.png",
+              "orderNum": 929
+            },
+            {
+              "id": "1750713979610595335",
+              "name": "Vasic Wells Mini Mini 牛皮抽绳单肩手提包 奶油白色",
+              "desc": "抽绳束口 小众手袋",
+              "price": "3108.00",
+              "picture": "https://yjy-teach-oss.oss-cn-beijing.aliyuncs.com/meikou/254839/p1.png",
+              "orderNum": 26
+            },
+            {
+              "id": "1750713979203747843",
+              "name": "ROOTOTE FEATHER ROO 大容量轻便多用羽绒双肩包 酒红棕色",
+              "desc": "大容量实用羽绒双肩包",
+              "price": "449.00",
+              "picture": "https://yjy-teach-oss.oss-cn-beijing.aliyuncs.com/meikou/250039/p1.png",
+              "orderNum": 15
+            },
+            {
+              "id": "1750713979329576964",
+              "name": "CA4LA FREEDOM JOURNEY WS 2 BEIGE ONESIZE 货号:DOU01880",
+              "desc": "自由塑形，风格百搭",
+              "price": "977.00",
+              "picture": "https://yjy-teach-oss.oss-cn-beijing.aliyuncs.com/meikou/254380/p1.png",
+              "orderNum": 14
+            },
+            {
+              "id": "1750713979002421248",
+              "name": "THE NORTH FACE PURPLE LABEL 灯芯绒双面棉外套 BR(Brown)",
+              "desc": "复古风格双面穿搭",
+              "price": "3455.00",
+              "picture": "https://yjy-teach-oss.oss-cn-beijing.aliyuncs.com/meikou/260272/p1.png",
+              "orderNum": 18
+            },
+            {
+              "id": "1750713979895808016",
+              "name": "COGIT UV时尚宽檐牛仔布渔夫帽 深蓝色",
+              "desc": "不压发型 清凉舒适",
+              "price": "132.00",
+              "picture": "https://yjy-teach-oss.oss-cn-beijing.aliyuncs.com/meikou/250541/p1.png",
+              "orderNum": 28
+            },
+            {
+              "id": "1750713979312799746",
+              "name": "NEW ERA 双耳针织帽黑色 OSFM(98)",
+              "desc": "保暖耳瓣，时尚百搭",
+              "price": "388.00",
+              "picture": "https://yjy-teach-oss.oss-cn-beijing.aliyuncs.com/meikou/256173/p1.png",
+              "orderNum": 9
+            }
+          ]
+        }
+      },
+      {
+        "id": "912000342",
+        "title": "新品预告",
+        "goodsItems": {
+          "counts": 459,
+          "pageSize": 10,
+          "pages": 46,
+          "page": 1,
+          "items": [
+            {
+              "id": "1750713978985644033",
+              "name": "Fleep 带胸垫纯棉蕾丝背心打底内衣 烟粉色",
+              "desc": "贴身无痕，轻薄吸汗",
+              "price": "411.00",
+              "picture": "https://yjy-teach-oss.oss-cn-beijing.aliyuncs.com/meikou/216885/p1.png",
+              "orderNum": 14
+            },
+            {
+              "id": "1750713979535097864",
+              "name": "十方未来 舒适贴身内搭保暖打底衣 棕色",
+              "desc": "对抗寒冬，倍暖打底",
+              "price": "354.00",
+              "picture": "https://yjy-teach-oss.oss-cn-beijing.aliyuncs.com/meikou/239623/p6.png",
+              "orderNum": 16
+            },
+            {
+              "id": "1379052170040578049",
+              "name": "极光限定 珠光蓝珐琅锅",
+              "desc": null,
+              "price": "199.00",
+              "picture": "http://yjy-xiaotuxian-dev.oss-cn-beijing.aliyuncs.com/picture/2021-04-05/7f483771-6831-4a7a-abdb-2625acb755f3.png",
+              "orderNum": 929
+            },
+            {
+              "id": "1750713979203747843",
+              "name": "ROOTOTE FEATHER ROO 大容量轻便多用羽绒双肩包 酒红棕色",
+              "desc": "大容量实用羽绒双肩包",
+              "price": "449.00",
+              "picture": "https://yjy-teach-oss.oss-cn-beijing.aliyuncs.com/meikou/250039/p1.png",
+              "orderNum": 15
+            },
+            {
+              "id": "1750713979405074436",
+              "name": "SAIMEI 彩明 i.ro 儿童防紫外线太阳镜 蓝色",
+              "desc": "防紫外线舒适护目太阳镜",
+              "price": "839.00",
+              "picture": "https://yjy-teach-oss.oss-cn-beijing.aliyuncs.com/meikou/235214/p5.png",
+              "orderNum": 8
+            },
+            {
+              "id": "1750713979312799746",
+              "name": "NEW ERA 双耳针织帽黑色 OSFM(98)",
+              "desc": "保暖耳瓣，时尚百搭",
+              "price": "388.00",
+              "picture": "https://yjy-teach-oss.oss-cn-beijing.aliyuncs.com/meikou/256173/p1.png",
+              "orderNum": 9
+            },
+            {
+              "id": "1750713979895808016",
+              "name": "COGIT UV时尚宽檐牛仔布渔夫帽 深蓝色",
+              "desc": "不压发型 清凉舒适",
+              "price": "132.00",
+              "picture": "https://yjy-teach-oss.oss-cn-beijing.aliyuncs.com/meikou/250541/p1.png",
+              "orderNum": 28
+            },
+            {
+              "id": "1750713979002421248",
+              "name": "THE NORTH FACE PURPLE LABEL 灯芯绒双面棉外套 BR(Brown)",
+              "desc": "复古风格双面穿搭",
+              "price": "3455.00",
+              "picture": "https://yjy-teach-oss.oss-cn-beijing.aliyuncs.com/meikou/260272/p1.png",
+              "orderNum": 18
+            },
+            {
+              "id": "1750713979610595335",
+              "name": "Vasic Wells Mini Mini 牛皮抽绳单肩手提包 奶油白色",
+              "desc": "抽绳束口 小众手袋",
+              "price": "3108.00",
+              "picture": "https://yjy-teach-oss.oss-cn-beijing.aliyuncs.com/meikou/254839/p1.png",
+              "orderNum": 26
+            },
+            {
+              "id": "1750713979329576964",
+              "name": "CA4LA FREEDOM JOURNEY WS 2 BEIGE ONESIZE 货号:DOU01880",
+              "desc": "自由塑形，风格百搭",
+              "price": "977.00",
+              "picture": "https://yjy-teach-oss.oss-cn-beijing.aliyuncs.com/meikou/254380/p1.png",
+              "orderNum": 14
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
