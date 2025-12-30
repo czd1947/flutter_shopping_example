@@ -61,42 +61,44 @@ class _HmHotState extends State<HmHot> {
 
       return ClipRect(
         child: Row(
-          spacing: 30, // 间距
+          spacing: 10, // 间距
           children: List.generate(tempList.length, (int index) {
-            return Column(
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
-                  child: Image.network(
-                    tempList[index].picture,
-                    width: itemWidth,
-                    height: 140,
-                    fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) {
-                      return Container(
-                        width: itemWidth,
-                        height: 140,
-                        color: Colors.grey,
-                        child: Icon(Icons.error),
-                      );
-                    },
+            return Expanded(
+              child: Column(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: Image.network(
+                      tempList[index].picture,
+                      // width: itemWidth,
+                      // height: 140,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Container(
+                          // width: itemWidth,
+                          // height: 140,
+                          color: Colors.grey,
+                          child: Icon(Icons.error),
+                        );
+                      },
+                    ),
                   ),
-                ),
-                SizedBox(height: 5),
-                Container(
-                  padding: EdgeInsets.all(5),
-                  decoration: BoxDecoration(
-                    color: Colors.red,
-                    borderRadius: BorderRadius.circular(15),
+                  SizedBox(height: 5),
+                  Container(
+                    padding: EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Text(
+                      '￥${tempList[index].price}',
+                      style: TextStyle(fontSize: 12, color: Colors.white),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
-                  child: Text(
-                    '￥${tempList[index].price}',
-                    style: TextStyle(fontSize: 12, color: Colors.white),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-              ],
+                ],
+              ),
             );
           }),
         ),

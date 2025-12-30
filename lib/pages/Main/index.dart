@@ -58,6 +58,7 @@ class _MainPageState extends State<MainPage> {
   }
 
   // 获取应用程序导航栏子组件
+  // navTab
   List<Widget> _getChildren() {
     return [HomeView(), CategoryView(), CartView(), MyView()];
   }

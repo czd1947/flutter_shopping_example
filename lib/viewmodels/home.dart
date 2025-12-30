@@ -241,11 +241,12 @@ class SpecialOfferGoodsItem {
 		},
 ]
 */
+
 // 根据上面的json 定义推荐商品数据类型
 class RecommendGoodsItem {
   String id;
   String name;
-  double price;
+  dynamic price;
   String picture;
   int payCount;
 
@@ -261,9 +262,40 @@ class RecommendGoodsItem {
     return RecommendGoodsItem(
       id: json['id'] ?? '',
       name: json['name'] ?? '',
-      price: json['price'] ?? 0.0,
+      price: json['price'],
       picture: json['picture'] ?? '',
       payCount: json['payCount'] ?? 0,
+    );
+  }
+}
+
+// 猜你喜欢商品数据类型
+class RecommendDetailGoodsItem {
+  int counts;
+  int pageSize;
+  int pages;
+  int page;
+  List<RecommendGoodsItem> items;
+
+  RecommendDetailGoodsItem({
+    required this.counts,
+    required this.pageSize,
+    required this.pages,
+    required this.page,
+    required this.items,
+  });
+
+  factory RecommendDetailGoodsItem.fromJSON(Map<String, dynamic> json) {
+    return RecommendDetailGoodsItem(
+      counts: json['counts'] ?? 0,
+      pageSize: json['pageSize'] ?? 0,
+      pages: json['pages'] ?? 0,
+      page: json['page'] ?? 0,
+      items:
+          (json['items'] as List?)
+              ?.map((item) => RecommendGoodsItem.fromJSON(item))
+              .toList() ??
+          [],
     );
   }
 }

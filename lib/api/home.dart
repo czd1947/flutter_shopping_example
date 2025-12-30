@@ -64,3 +64,16 @@ Future<List<RecommendGoodsItem>> getRecommendListAPI(
       })
       .toList();
 }
+
+// 获取猜你喜欢商品数据
+Future<RecommendDetailGoodsItem> getGuessLikeListAPI(
+  Map<String, dynamic> params,
+) async {
+  // 返回请求数据
+  return RecommendDetailGoodsItem.fromJSON(
+    await DioRequest().get(
+      HttpConstants.GUESS_LIKE_LIST,
+      queryParameters: params,
+    ),
+  );
+}

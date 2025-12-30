@@ -30,6 +30,7 @@ class _HmMoreListState extends State<HmMoreList> {
         itemCount: widget.recommendList.length,
         itemBuilder: (context, index) {
           return Container(
+            color: Colors.white,
             // 移除固定高度，让网格控制
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

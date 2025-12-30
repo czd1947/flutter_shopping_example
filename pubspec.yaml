@@ -1,5 +1,5 @@
-name: flu_web_pro01
-description: "A new Flutter project."
+name: 'flu_web_pro01'
+description: "czd的商城项目，第一个flutter 项目"
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -36,10 +36,14 @@ dependencies:
   cupertino_icons: ^1.0.8
   dio: ^5.9.0
   carousel_slider: ^5.1.1
+  # 获取应用信息
+  package_info_plus: ^9.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  # 应用图标生成工具
+  flutter_launcher_icons: ^0.13.1
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -89,3 +93,9 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+
+# 应用图标配置
+flutter_launcher_icons:
+  image_path: "lib/assets/images/facebook_icon-icons.com_53612.png"
+  android: true
+  ios: true
