@@ -1,8 +1,11 @@
 import 'package:flu_web_pro01/api/home.dart';
 import 'package:flu_web_pro01/components/Home/HmMoreList.dart';
 import 'package:flu_web_pro01/components/Main/HmGuess.dart';
+import 'package:flu_web_pro01/stores/UserController.dart';
 import 'package:flu_web_pro01/viewmodels/home.dart';
+import 'package:flu_web_pro01/viewmodels/user.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class MyView extends StatefulWidget {
   MyView({Key? key}) : super(key: key);
@@ -12,6 +15,9 @@ class MyView extends StatefulWidget {
 }
 
 class _MyViewState extends State<MyView> {
+  // 引入用户控制器 , 初期可为空
+  UsersController? _usersController;
+
   List<RecommendGoodsItem> _guessLikeList = [];
   final Map<String, dynamic> _guessLikeParams = {"page": 1, "pageSize": 10};
   // 加载状态
@@ -39,8 +45,16 @@ class _MyViewState extends State<MyView> {
   }
 
   @override
-  initState() {
+  void initState() {
     super.initState();
+
+    // 尝试获取控制器，如果不存在则创建并注册
+    try {
+      _usersController = Get.find<UsersController>();
+    } catch (e) {
+      print("Controller not found, creating new instance");
+      _usersController = Get.put(UsersController());
+    }
 
     // 调用猜你喜欢商品数据接口
     _getGuessLikeList();
@@ -92,25 +106,41 @@ class _MyViewState extends State<MyView> {
       ),
       child: Row(
         children: [
-          // 左侧图像
-          Image.asset(
-            "lib/assets/images/my_avatardefault.png",
-            width: 40,
-            height: 40,
-          ),
+          // 使用 Obx
+          Obx(() {
+            final user =
+                _usersController?.user.value ?? UserModel.fromJSON({}); // 默认值
+
+            // 左侧图像
+            return CircleAvatar(
+              radius: 26,
+              backgroundImage: user.avatar != ''
+                  ? NetworkImage(user.avatar)
+                  : AssetImage("lib/assets/images/my_avatardefault.png")
+                        as ImageProvider<Object>?,
+            );
+          }),
           // 增加一个 SizedBox 组件，用于分隔 图像和文字
           SizedBox(width: 10),
-          // 右侧立即登录
-          GestureDetector(
-            onTap: () {
-              // 跳转到登录页面
-              Navigator.pushNamed(context, '/login');
-            },
-            child: Text(
-              "立即登录",
-              style: TextStyle(color: Colors.black, fontSize: 16),
-            ),
-          ),
+          // 同样使用 Obx 包裹需要使用到 共享数据的内容
+          Obx(() {
+            final user =
+                _usersController?.user.value ?? UserModel.fromJSON({}); // 默认值
+
+            return // 右侧立即登录
+            GestureDetector(
+              onTap: () {
+                if (user.token == '') {
+                  // 跳转到登录页面
+                  Navigator.pushNamed(context, '/login');
+                }
+              },
+              child: Text(
+                user.id == '' ? "立即登录" : user.id,
+                style: TextStyle(color: Colors.black, fontSize: 16),
+              ),
+            );
+          }),
         ],
       ),
     );

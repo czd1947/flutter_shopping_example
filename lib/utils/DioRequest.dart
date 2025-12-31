@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flu_web_pro01/constants/index.dart';
+import 'package:flu_web_pro01/stores/TokenManager.dart';
 
 class DioRequest {
   // Dio 实例对象，用于发起HTTP请求
@@ -27,14 +28,13 @@ class DioRequest {
       InterceptorsWrapper(
         // 请求拦截器：在请求发送前执行
         // 主要功能：自动注入 JWT Token 到请求头
-        onRequest: (request, handler) {
-          // TODO: 检查是否存在有效Token， 存在则自动添加到请求头
-          // // 从本地存储获取Token
-          // String? token = await LocalStorageUtils.getToken();
-          // if (token != null) {
-          //   // 存在有效Token，添加到请求头
-          //   request.headers['Authorization'] = 'Bearer $token';
-          // }
+        onRequest: (request, handler) async {
+          // 检查是否存在有效Token， 存在则自动添加到请求头
+          String token = await TokenManager().getToken();
+          if (token != '') {
+            // 存在有效Token，添加到请求头
+            request.headers['Authorization'] = 'Bearer $token';
+          }
 
           // 继续请求流程
           return handler.next(request);

@@ -1,8 +1,13 @@
+import 'package:flu_web_pro01/api/user.dart';
+import 'package:flu_web_pro01/stores/TokenManager.dart';
+import 'package:flu_web_pro01/stores/UserController.dart';
+import 'package:flu_web_pro01/viewmodels/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flu_web_pro01/pages/Cart/index.dart';
 import 'package:flu_web_pro01/pages/Category/index.dart';
 import 'package:flu_web_pro01/pages/Home/index.dart';
 import 'package:flu_web_pro01/pages/My/index.dart';
+import 'package:get/get.dart';
 
 class MainPage extends StatefulWidget {
   MainPage({Key? key}) : super(key: key);
@@ -14,6 +19,40 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   // 当前选中的导航栏索引
   int _currentIndex = 0;
+
+  // 初始化状态的时候 获取请求参数
+  @override
+  void initState() {
+    super.initState();
+
+    // 在异步任务中 获取请求参数
+    Future.microtask(() {
+      final Map<String, dynamic>? args =
+          ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
+      // 如果有参数，更新当前选中的导航栏索引
+      if (args != null && args.containsKey("_currentIndex")) {
+        setState(() {
+          _currentIndex = args["_currentIndex"];
+        });
+      }
+    });
+
+    // 初始化用户信息
+    _initUserInfo();
+  }
+
+  final UsersController usersController = Get.put(UsersController());
+  Future<void> _initUserInfo() async {
+    String token = await TokenManager().getToken();
+
+    // 1. 判断Token 是否存在
+    if (token != '') {
+      // 2. 获取用户信息
+      final UserModel userInfo = await getUserInfo();
+      // 3. 更新用户信息到全局状态管理
+      usersController.updateUser(userInfo);
+    }
+  }
 
   // 应用程序导航栏数据
   final List<Map<String, String>> _tabList = [

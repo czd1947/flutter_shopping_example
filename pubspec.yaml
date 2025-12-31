@@ -38,6 +38,8 @@ dependencies:
   carousel_slider: ^5.1.1
   # 获取应用信息
   package_info_plus: ^9.0.0
+  get: ^4.7.3
+  shared_preferences: ^2.5.4
 
 dev_dependencies:
   flutter_test:
