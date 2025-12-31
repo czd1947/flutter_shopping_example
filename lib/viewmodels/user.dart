@@ -53,4 +53,20 @@ class UserModel {
       provinceCode: json['provinceCode'] ?? '',
     );
   }
+
+  // 定义 toJson 方法
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'account': account,
+      'mobile': mobile,
+      'token': token,
+      'avatar': avatar,
+      'nickname': nickname,
+      'gender': gender,
+      'birthday': birthday,
+      'cityCode': cityCode,
+      'provinceCode': provinceCode,
+    };
+  }
 }

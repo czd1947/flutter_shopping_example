@@ -1,6 +1,7 @@
 import 'package:flu_web_pro01/api/home.dart';
 import 'package:flu_web_pro01/components/Home/HmMoreList.dart';
 import 'package:flu_web_pro01/components/Main/HmGuess.dart';
+import 'package:flu_web_pro01/stores/TokenManager.dart';
 import 'package:flu_web_pro01/stores/UserController.dart';
 import 'package:flu_web_pro01/viewmodels/home.dart';
 import 'package:flu_web_pro01/viewmodels/user.dart';
@@ -130,13 +131,61 @@ class _MyViewState extends State<MyView> {
             return // 右侧立即登录
             GestureDetector(
               onTap: () {
-                if (user.token == '') {
+                if (user.id == '') {
                   // 跳转到登录页面
                   Navigator.pushNamed(context, '/login');
                 }
               },
               child: Text(
                 user.id == '' ? "立即登录" : user.id,
+                style: TextStyle(color: Colors.black, fontSize: 16),
+              ),
+            );
+          }),
+          // 占用其他位置
+          Expanded(child: Text("")),
+
+          // 右侧 退出登录
+          Obx(() {
+            final user =
+                _usersController?.user.value ?? UserModel.fromJSON({}); // 默认值
+
+            return // 右侧 退出登录
+            GestureDetector(
+              onTap: () async {
+                if (user.id == '') {
+                  // 未登录，直接返回
+                  return;
+                }
+
+                // 使用 ShowDialog 组件
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: Text("提示"),
+                    content: Text("确认退出登录吗？"),
+                    actions: [
+                      TextButton(
+                        onPressed: () => Navigator.pop(context),
+                        child: Text("取消"),
+                      ),
+                      TextButton(
+                        onPressed: () async {
+                          // 1. 调用退出登录接口
+                          await TokenManager().removeToken();
+                          // 2. 更新用户信息到全局状态管理
+                          _usersController?.updateUser(UserModel.fromJSON({}));
+                          // 3. 关闭弹窗
+                          Navigator.pop(context);
+                        },
+                        child: Text("确认"),
+                      ),
+                    ],
+                  ),
+                );
+              },
+              child: Text(
+                user.id == '' ? "" : "退出登录",
                 style: TextStyle(color: Colors.black, fontSize: 16),
               ),
             );

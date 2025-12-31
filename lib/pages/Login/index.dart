@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flu_web_pro01/api/user.dart';
 import 'package:flu_web_pro01/stores/TokenManager.dart';
 import 'package:flu_web_pro01/stores/UserController.dart';
+import 'package:flu_web_pro01/utils/LoadingDialog.dart';
 import 'package:flu_web_pro01/utils/ToastUtils.dart';
 import 'package:flu_web_pro01/viewmodels/user.dart';
 import 'package:flutter/material.dart';
@@ -15,8 +16,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  TextEditingController _accountController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _accountController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
   // 登录表单
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   // 定义设置 共享用户数据的控制器
@@ -172,6 +173,8 @@ class _LoginPageState extends State<LoginPage> {
             }
 
             try {
+              LoadingDialog.show(context, message: "正在努力登录中...");
+
               // 调用登录接口
               UserModel userInfo = await login(
                 account: _accountController.text,
@@ -182,6 +185,8 @@ class _LoginPageState extends State<LoginPage> {
               _usersController.updateUser(userInfo);
               // 持久化储存用户token数据 (会将token 存储到本地)
               TokenManager().setToken(userInfo.token);
+              // 隐藏loading弹窗
+              LoadingDialog.hide(context);
 
               // 登录成功，提示用户
               ToastUtils.show(context, "登录成功");
@@ -194,7 +199,8 @@ class _LoginPageState extends State<LoginPage> {
                 );
               });
             } catch (e) {
-              print("e的信息, ");
+              // 隐藏loading弹窗
+              LoadingDialog.hide(context);
               // 登录失败，提示用户
               ToastUtils.show(context, (e as DioException).message ?? "登录失败");
               return;
